@@ -35,4 +35,18 @@ describe "Static pages" do
     end
   end
   
+describe "Contact page" do
+    it "should have the h1 'Contact Us'" do
+      visit '/static_pages/contact'
+      page.should have_selector('h1', :text => 'Contact Us')
+    end
+    it "should have the base title" do
+      visit '/static_pages/contact'
+      page.should have_selector('title', :text => 'Ruby on Rails Tutorial')
+    end
+    it "should NOT have a custom page title with a pipe symbol" do
+      visit '/static_pages/contact'
+      page.should_not have_selector('title', :text => '| Contact')
+    end
+  end
 end
